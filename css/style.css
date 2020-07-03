@@ -1,0 +1,817 @@
+@keyframes changeColor
+{
+	from { color: white; }
+	50% { color: blue; }
+	to { color: white; }
+}
+
+@keyframes spinAndScaleWin
+{
+	from {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0) rotate(0);
+	}
+	to {
+		opacity: 0.8;
+		transform: translate(-50%, -50%) scale(1) rotate(720deg);
+	}
+}
+
+@keyframes dropFromTopGameOver
+{
+	from{
+		opacity: 0;
+		top: 0;
+	}
+	to{
+		opacity: 1;
+		top: 5%;
+	}
+}
+
+@keyframes dropFromBottomWin
+{
+	from{
+		opacity: 0;
+		bottom: 0;
+	}
+	to{
+		opacity: 1;
+		bottom: 40%;
+	}
+}
+
+@keyframes scaleGameLose
+{
+	from{
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	to{
+		opacity: 0.7;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@keyframes dropFromTopMainLogo
+{
+	from{
+		top: 0;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+	}
+	to{
+		top: 20%;
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@keyframes dropFromTopLogo
+{
+	from{
+		top: 0;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+	}
+	to{
+		top: 80%;
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@keyframes dropFromTopControls
+{
+	from{ top: -1000px; }
+
+	to { top: 0; }
+}
+
+@keyframes dropControlsBack
+{
+	from{ top: 0; }
+
+	to { top: -1000px; }
+}
+
+@keyframes dropFromBottomUserName{
+	from {
+		opacity: 0;
+		left: 0;
+	}
+	to {
+		opacity: 1;
+		left: 50%;
+	}
+}
+
+body{
+	font-family: 'Press Start 2P', cursive;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	-webkit-user-select: none;
+}
+
+#wrapper{
+	background: #E9E9E9;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.page-center {
+	position: relative;
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+#main{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	position: relative;
+	background-color: #E9E9E9;
+}
+
+#game{
+	display: block;
+	height: 100vh;
+	position: relative;
+	background-color: #E9E9E9;
+}
+
+#controls,
+#records{
+	display: flex;
+	position: absolute;
+	z-index: 5;
+	width: 100%;
+	height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E9E9E9;
+}
+
+#main > div{
+	text-align: center;
+}
+
+.main-logo-wrapper img{
+	opacity: 1;
+	width: 100%;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	animation: dropFromTopMainLogo 3s;
+}
+
+.main-arkanoid-wrapper img{
+	width: 170px;
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	animation: dropFromTopLogo 3s;
+}
+
+.main-btn-wrapper > div{
+	margin: 20px 0;
+}
+
+.main-btn{
+	font: 17px 'Press Start 2P', cursive;
+	width: 300px;
+	border: none;
+	padding: 20px 10px;
+	color: white;
+	background-color: black;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.main-btn:hover,
+.btn:hover,
+.controls-btn button:hover,
+.records-btn button:hover{
+	background-color: #737373;
+	color: black;
+}
+
+#game-field-wrapper{
+	height: 70vh;
+	position: relative;
+}
+
+.buttons-wrapper{
+	height: 7vh;
+	display: flex;
+}
+
+.buttons-wrapper div{
+	flex: 1 1;
+	margin: auto;
+}
+
+.buttons-wrapper div:not(:first-child):not(:last-child){
+	margin: auto 15px;
+}
+
+.buttons-wrapper div:first-child{
+	margin-right: 15px;
+}
+
+.buttons-wrapper div:last-child{
+	margin-left: 15px;
+}
+
+.btn{
+	font: 15px 'Press Start 2P', cursive;
+	width: 100%;
+	border: none;
+	padding: 10px 5px;
+	color: white;
+	background-color: black;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.drop-center{
+	top: 0;
+	display: flex;
+	animation: dropFromTopControls 1.5s;
+}
+
+.drop-back{
+	top: -1000px;
+	animation: dropControlsBack 1.5s;
+}
+
+.controls-header,
+.records-header{
+	flex: 1 1;
+	display: flex;
+	align-items: center;
+}
+
+.controls-content,
+.records-content{
+	flex: 2 1;
+}
+
+.controls-btn,
+.records-btn{
+	flex: 1 1;
+}
+
+.controls-btn button,
+.records-btn button{
+	font: 15px 'Press Start 2P', cursive;
+	width: 200px;
+	border: none;
+	padding: 20px 10px;
+	color: white;
+	background-color: black;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.controls-content img{
+	width: 70px;
+}
+
+.controls-content > li{
+	display: flex;
+	position: relative;
+	height: 7vh;
+}
+
+.controls-content > li > div:first-child{
+	margin: auto 20px;
+}
+
+.controls-content > li > div:last-child{
+	margin: auto 30px;
+	font-size: 13px;
+}
+
+.player-info-wrapper{
+	position: relative;
+	margin-top: 5px;
+	display: flex;
+	font-size: 25px;
+	height: 7vh;
+}
+
+.player-info-wrapper > div{
+	display: flex;
+	justify-content: center;
+	flex: 1 1;
+}
+
+.player-info-wrapper > div > div{
+	align-self: center;
+}
+
+.player-info-wrapper img{
+	width: 60px;
+}
+
+#player-life img{
+	position: relative;
+	top: -5px;
+}
+
+#score,
+#level{
+	margin-left: 13px;
+}
+
+#health{
+	margin-right: 13px;
+}
+
+#mobileBtn{
+	height: 7vh;
+	display: none;
+	position: relative;
+}
+
+#mobileBtn > div{
+	flex: 1 1;
+	text-align: center;
+	line-height: 10vw;
+	width: 10vw;
+	height: 10vw;
+	border-radius: 50%;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+
+#mobileBtn > div:first-child{
+	background: center no-repeat url('../img/left-arrow.svg') ;
+}
+
+#mobileBtn > div:last-child{
+	background: center no-repeat url('../img/right-arrow.svg') ;
+}
+
+.arrow-touch{
+	background-color: #737373;
+}
+
+.mobile-start{
+	font-size: 13px;
+	color: #000;
+}
+
+#game-start{
+	position: absolute;
+	z-index: 1;
+	cursor: pointer;
+	font-size: 20px;
+	top: 40%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	animation: changeColor 3s ease-in-out infinite;
+}
+
+#game-pause-notice{
+	position: absolute;
+	z-index: 1;
+	font-size: 20px;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	animation: changeColor 3s ease-in-out infinite;
+}
+
+div#game-pause-notice{
+	display: none;
+}
+
+.win-wrapper,
+.game-over-wrapper{
+	display: none;
+	font-size: 20px;
+	color: white;
+}
+
+.game-over-wrapper img{
+	width: 40vh;
+}
+
+.win-wrapper img{
+	width: 30vh;
+}
+
+.win-wrapper,
+.game-over-wrapper{
+	text-align: center;
+}
+
+.win-wrapper div,
+.game-over-wrapper div{
+	position: absolute;
+	left: 50%;
+	margin-right: -50%;
+}
+
+.win-wrapper div:first-child,
+.game-over-wrapper div:first-child{
+	top: 5%;
+	transform: translate(-50%, -50%);
+	animation: dropFromTopGameOver 4s ease-in-out;
+}
+
+.win-img{
+	top: 30%;
+	opacity: 0.8;
+	transform: translate(-50%, -50%);
+	animation: spinAndScaleWin 4s ease-in-out;
+}
+
+.game-over-img{
+	top: 30%;
+	opacity: 0.7;
+	transform: translate(-50%, -50%);
+	animation: scaleGameLose 5s;
+}
+
+.play-again{
+	display: none;
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	bottom: 40%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	animation: dropFromBottomWin 4s ease-in-out;
+}
+
+.play-again{
+	cursor: pointer;
+}
+
+.records-content li{
+	margin: 20px 0;
+}
+
+.best-result{
+	display: none;
+	opacity: 1;
+	color: white;
+	position: absolute;
+	margin-right: -50%;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: grey;
+	text-align: center;
+	animation: dropFromBottomUserName 1.5s ease-in-out;
+}
+
+.best-result > div:first-child{
+	margin: 15px 0;
+}
+
+.user-name-wrapper{
+	display: flex;
+	align-items: center;
+	padding-bottom: 15px;
+}
+
+#user-name{
+	height: 40px;
+	margin: 0 10px;
+	border: none;
+	padding: 0;
+}
+
+#user-nameBtn{
+	height: 40px;
+	font: 13px 'Press Start 2P', cursive;
+	border: none;
+	padding: 10px 5px;
+	color: white;
+	background-color: #000;
+	margin: 0 10px;
+}
+
+
+	@media (max-width: 1100px){
+		#mobileBtn{
+			display: flex;
+		}
+	}
+
+	@media (max-width: 600px){
+		.page-center{
+			max-width: 500px;
+		}
+		
+		#game-field-wrapper{
+			height: 60vh;
+		}
+
+		.player-info-wrapper img{
+			width: 50px;
+		}
+
+		.player-info-wrapper{
+			font-size: 20px;
+		}
+
+		#player-life img{
+			top: -8px;
+		}
+
+		#game-start,
+		#game-pause-notice,
+		.win-wrapper,
+		.play-again,
+		.game-over-wrapper{
+			font-size: 18px;
+		}
+
+		.game-over-wrapper img{
+			width: 35vh;
+		}
+
+		.win-wrapper img{
+			width: 25vh;
+		}
+
+		.btn{
+			font-size: 10px;
+		}
+
+		.main-btn{
+			width: 250px;
+		}
+
+		.controls-btn button,
+		.records-btn button{
+			width: 150px;
+			font-size: 13px;
+		}
+
+		.main-arkanoid-wrapper img{
+			width: 120px;
+		}
+	}
+
+	@media (max-width: 550px){		
+		.page-center{
+			max-width: none;
+		}
+
+		.player-info-wrapper{
+			font-size: 13px;
+		}
+
+		.player-info-wrapper img{
+			width: 40px;
+		}
+
+		#score,
+		#level{
+			margin-left: 7px;
+		}
+
+		#health{
+			margin-right: 7px;
+		}
+
+		#player-life img{
+			top: -6px;
+		}
+
+		#game-start,
+		#game-pause-notice,
+		.win-wrapper,
+		.play-again,
+		.game-over-wrapper{
+			font-size: 15px;
+		}
+
+		.game-over-wrapper img{
+			width: 25vh;
+		}
+
+		.records-content{
+			font-size: 11px;
+		}
+	}
+
+	@media (max-width: 500px){	
+		.btn{
+			width: 150px;
+			font-size: 9px;
+			padding: 7px 5px;
+		}
+
+		.buttons-wrapper div{
+			flex: 1 0 25%;
+			flex-basis: 25%;
+			text-align: center;	
+		}
+
+		.buttons-wrapper{
+			flex-wrap: wrap;
+		}
+
+		.buttons-wrapper div:not(:first-child):not(:last-child){
+			margin: 0 15px;
+		}
+
+		.buttons-wrapper div:first-child{
+			margin: 0 0 0 15px;
+		}
+
+		.buttons-wrapper div:last-child{
+			margin: 0 15px 0 0;
+		}
+
+		.main-btn{
+			width: 225px;
+			font-size: 15px;
+		}
+
+		.main-arkanoid-wrapper img{
+			width: 100px;
+		}
+
+		.controls-btn button,
+		.records-btn button{
+			width: 130px;
+			font-size: 10px;
+		}
+		
+		.controls-content img{
+			width: 50px;
+		}
+		.controls-content > li > div:last-child{
+			font-size: 13px;
+		}
+
+	}
+
+	@media (max-width: 470px){
+		.mobile-start{
+			font-size: 10px;
+		}
+
+		#main,
+		#game,
+		#controls,
+		#records,
+		#wrapper{
+			height: 86vh;
+		}
+
+		.player-info-wrapper img{
+			width: 30px;
+		}
+
+		.best-result{
+			font-size: 13px
+		}
+
+		#user-name{
+			height: 30px;
+		}
+
+		#user-nameBtn{
+			height: 30px;
+			font: 10px 'Press Start 2P', cursive;
+		}
+	}
+
+	@media (max-width: 380px){
+		.mobile-start{
+			font-size: 8px;
+		}
+
+		.best-result{
+			font-size: 10px
+		}
+
+		#user-nameBtn{
+			font-size: 9px;
+			padding: 7px 5px;
+		}
+	}
+
+	@media (max-width: 350px){	
+		.btn{
+			font-size: 7px;
+			width: 125px;
+		}
+
+		.main-btn{
+			width: 175px;
+			font-size: 13px;
+		}
+
+		.controls-btn button,
+		.records-btn button{
+			width: 110px;
+		}
+
+		.controls-content > li > div:last-child{
+			font-size: 10px;
+		}
+
+		.records-content{
+			font-size: 9px;
+		}
+	}
+
+	@media (max-width: 315px){
+
+		#game-start,
+		#game-pause-notice,
+		.win-wrapper,
+		.play-again,
+		.game-over-wrapper{
+			font-size: 10px;
+		}
+	}
+
+	@media (max-width: 300px){	
+		.btn{
+			width: 100px;
+		}
+
+		.main-btn{
+			width: 150px;
+			font-size: 10px;
+		}
+
+		.main-arkanoid-wrapper img{
+			width: 75px;
+		}
+
+		.best-result{
+			font-size: 7px
+		}
+
+		#user-name{
+			height: 25px;
+			width: 100px;
+		}
+
+		#user-nameBtn{
+			height: 25px;
+			font-size: 7px;
+			padding: 7px 5px;
+		}
+	}
+
+	@media (max-width: 250px){	
+		.btn{
+			width: 80px;
+		}
+
+		.main-btn{
+			width: 125px;
+		}
+
+		.controls-btn button,
+		.records-btn button{
+			width: 90px;
+			font-size: 7px;
+		}
+	}
+
+	@media (max-width: 210px){	
+		.btn{
+			width: 50px;
+			font-size: 5px;
+		}
+
+		.controls-btn button,
+		.records-btn button{
+			width: 70px;
+			font-size: 7px;
+		}
+	}
